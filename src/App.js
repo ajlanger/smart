@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css'
+
+function App( { signOut, user} ) {
   return (
     <div className="App">
       <header className="App-header">
@@ -17,9 +20,11 @@ function App() {
         >
           Learn React
         </a>
+        <Heading level={1}>Hello {user.userDataKey} </Heading>
+        <Button onClick={signOut}>Sign out</Button>
       </header>
     </div>
   );
 }
 
-export default App;
+export default withAuthenticator(App);
